@@ -3,19 +3,20 @@ import CardNotas from './CardNotas'
 
 class ListaDeNotas extends Component {
   render() {
-    return (
+    return(
       <ul>
-        <li>
-          <CardNotas/>
-        </li>
-        <li>
-          <CardNotas/>
-        </li>
-        <li>
-          <CardNotas/>
-        </li>
+        {Array.of("Trabalhos", "Trabalhos","Estudos").map((categoria) =>{
+          return(
+            <li>
+              <div>{categoria}</div>
+              <CardNotas/>
+            </li>
+          )
+        })}
       </ul>
     )
   }
+    
 }
+
 export default ListaDeNotas

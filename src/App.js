@@ -1,5 +1,16 @@
+import React from "react"
+import Formulario from "./components/Formulario"
+import ListaDeNotas from "./components/ListaDeNotas"
+
+
 function App() {
-  return <h1>Meu app react</h1>
+  return (
+    <section>
+     <Formulario />
+      <ListaDeNotas /> 
+     
+    </section>
+  )
 }
 
 export default App

@@ -6,17 +6,25 @@ import './assests/index.css'
 
 class App extends Component {
 
+  constructor(props){
+    super(props)
+    this.notas = []
+  }
+  //metodo de criar notas
   criaNota(titulo, texto){
-    console.log(`uma nova nota foi criada ` + titulo + ` ` + texto)
+    const novaNota = {titulo, texto}
+    this.notas.push(novaNota)
+    console.log(this.notas.length);
 
   }
   render() {
     return (
       <section className="conteudo">
-        <Formulario criarNota={this.criaNota}/>
-        <ListaDeNotas />
+        <Formulario criarNota={this.criaNota.bind(this)} //<!--props custumizados(injeção de depedência)--> 
+        /> 
+        <ListaDeNotas notas={this.notas}/> 
       </section>
-    )
+    ) 
   }
 }
 

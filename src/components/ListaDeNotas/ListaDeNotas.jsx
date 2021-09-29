@@ -3,11 +3,7 @@ import CardNota from '../CardNota'
 import './estilo.css'
 
 class ListaDeNotas extends Component {
-  
- /* constructor(props){
-    super(props)
-    não precisa declarar, pois é feto automatico
-  }*/
+
 
   render() {
     return (
@@ -17,7 +13,11 @@ class ListaDeNotas extends Component {
           return (
             <li className="lista-notas_item" key={index}>
               
-              <CardNota titulo={nota.titulo} texto={nota.texto}/>
+              <CardNota 
+              indece={index}
+              apagarNota={this.props.apagarNota}
+              titulo={nota.titulo} 
+              texto={nota.texto}/>
             </li>
           )
         })}

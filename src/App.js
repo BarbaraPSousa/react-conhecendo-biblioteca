@@ -5,12 +5,11 @@ import './assests/App.css'
 import './assests/index.css'
 
 class App extends Component {
-
   constructor(props) {
     super(props)
 
     this.state = {
-      notas:[]
+      notas: []
     }
   }
 
@@ -19,9 +18,16 @@ class App extends Component {
     const novaNota = { titulo, texto }
     const novoArrayNotas = [...this.state.notas, novaNota]
     const novoEstado = {
-      notas:novoArrayNotas
+      notas: novoArrayNotas
     }
     this.setState(novoEstado)
+  }
+
+  //metodo de deletar notas
+  deletarNota(index) {
+    let arrayNotas = this.state.notas
+    arrayNotas.splice(index, 1)
+    this.setState({ notas: arrayNotas })
   }
 
   render() {
@@ -30,7 +36,10 @@ class App extends Component {
         <Formulario
           criarNota={this.criaNota.bind(this)} //<!--props custumizados(injeção de depedência)-->
         />
-        <ListaDeNotas notas={this.state.notas} />
+        <ListaDeNotas
+          apagarNota={this.deletarNota.bind(this)}
+          notas={this.state.notas}
+        />
       </section>
     )
   }

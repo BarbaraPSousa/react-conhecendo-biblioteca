@@ -10,7 +10,8 @@ class App extends Component {
     super(props)
 
     this.state = {
-      notas: []
+      notas: [],
+      categorias: []
     }
   }
 
@@ -22,6 +23,12 @@ class App extends Component {
       notas: novoArrayNotas
     }
     this.setState(novoEstado)
+  }
+
+  adicionarCategoria(nomeCategoria) {
+    const novoArrayCategorias = [...this.state.categorias, nomeCategoria] //cria nova lista de categoria
+    const novoEstado = { ...this.state, categorias: novoArrayCategorias } // estadua atual, referenciado a nova lista
+    this.setState(novoEstado) //add novo estado
   }
 
   //metodo de deletar notas
@@ -38,7 +45,10 @@ class App extends Component {
           criarNota={this.criaNota.bind(this)} //<!--props custumizados(injeção de depedência)-->
         />
         <main className="conteudo-principal">
-          <ListaCategorias />
+          <ListaCategorias
+            adicionarCategoria={this.adicionarCategoria.bind(this)}
+            categorias={this.state.categorias}
+          />
           <ListaDeNotas
             apagarNota={this.deletarNota.bind(this)}
             notas={this.state.notas}

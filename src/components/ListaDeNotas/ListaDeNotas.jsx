@@ -9,7 +9,7 @@ class ListaDeNotas extends Component {
     return (
       // loop
       <ul className="lista-notas">
-        {this.props.notas.map((nota, index) => {
+        {this.props.notas.map((nota, index, categoria) => {
           return (
             <li className="lista-notas_item" key={index}>
               
@@ -17,7 +17,9 @@ class ListaDeNotas extends Component {
               indece={index}
               apagarNota={this.props.apagarNota}
               titulo={nota.titulo} 
-              texto={nota.texto}/>
+              texto={nota.texto}
+              categoria={nota.categoria}
+              />
             </li>
           )
         })}

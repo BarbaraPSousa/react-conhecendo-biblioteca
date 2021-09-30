@@ -4,7 +4,7 @@ import { ReactComponent as DeleteSVG } from '../../assests/imagens/delete.svg'
 
 class CardNota extends Component {
 
-  apagar(){ // funçãoq ue recebe o index
+  apagar(){ 
     const indece = this.props.indece;
     this.props.apagarNota(indece)
   }
@@ -14,6 +14,7 @@ class CardNota extends Component {
       <section className="card-nota">
         <header className="card-nota_cabecalho">
           <h3 className="card-nota_titulo">{this.props.titulo}</h3>
+          <h4>{this.props.categoria}</h4>
           <DeleteSVG onClick={this.apagar.bind(this)}/>
         </header>
 

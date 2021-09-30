@@ -6,10 +6,17 @@ class Formulario extends Component {
     // constutor
     super(props)
     this.titulo = ''
-    this.texte = ''
+    this.texto = ''
+    this.categoria = 'Sem Categoria'
   }
 
   //metodo
+  _handleMudancaCategoria(evento) {
+    // cria categoria
+    evento.stopPropagation()
+    this.categoria = evento.target.value
+  }
+
   _handleMudancaTitulo(evento) {
     //escrever o Titulo
     evento.stopPropagation()
@@ -22,17 +29,21 @@ class Formulario extends Component {
   }
 
   _criarNota(evento) {
-    evento.preventDefault() // não recarega a PG
-    evento.stopPropagation() // não deixa propagar informações
-    this.props.criarNota(this.titulo, this.texto)
+    evento.preventDefault()
+    evento.stopPropagation()
+    this.props.criarNota(this.titulo, this.texto, this.categoria)
   }
 
   render() {
     return (
-      <form className="form-cadastro" 
-      onSubmit={this._criarNota.bind(this)}>
-        <select className="form-cadastro_input">
-          {this.props.categorias.map(categoria =>{
+      <form className="form-cadastro" onSubmit={this._criarNota.bind(this)}>
+        <select
+          onChange={this._handleMudancaCategoria.bind(this)}
+          className="form-cadastro_input"
+        >
+          <option>Sem Categoria</option>
+
+          {this.props.categorias.map(categoria => {
             return <option> {categoria}</option>
           })}
         </select>

@@ -42,6 +42,7 @@ class App extends Component {
     return (
       <section className="conteudo">
         <Formulario
+          categorias={this.state.categorias}
           criarNota={this.criaNota.bind(this)} //<!--props custumizados(injeção de depedência)-->
         />
         <main className="conteudo-principal">

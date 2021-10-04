@@ -9,12 +9,13 @@ export default class Categorias {
   }
 
   notificar() {
-    this._inscritos.forEach(fun => {
-      fun(this.categorias)
+    this._inscritos.forEach(func => {
+      func(this.categorias)
     })
   } // para cada inscrito, executa a função que foi passada na categoria
 
   adicionarCategoria(novaCategoria) {
     this.categorias.push(novaCategoria)
+    this.notificar()
   }
 }

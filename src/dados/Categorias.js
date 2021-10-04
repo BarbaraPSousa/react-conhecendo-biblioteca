@@ -1,18 +1,22 @@
 export default class Categorias {
   constructor() {
     this.categorias = []
-    this._inscritos = [] // guarda quem vai ser notificado
+    this._inscritos = []
   }
 
-  inscrever(fun) {
-    this._inscritos.push(fun)
+  inscrever(func) {
+    this._inscritos.push(func)
+  }
+
+  desinscrever(func) {
+    this._inscritos = this._inscritos.filter(f => f !== func)
   }
 
   notificar() {
-    this._inscritos.forEach(func => {
+    this._inscritos.forEach(func =>{
       func(this.categorias)
     })
-  } // para cada inscrito, executa a função que foi passada na categoria
+  }
 
   adicionarCategoria(novaCategoria) {
     this.categorias.push(novaCategoria)

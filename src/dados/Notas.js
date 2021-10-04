@@ -15,8 +15,12 @@ export default class ArrayDeNotas {
     this.notificar();
   }
 
-  inscrever(fun) {
-    this._inscritos.push(fun)
+  inscrever(func) {
+    this._inscritos.push(func)
+  }
+
+  desinscrever(func) {
+    this._inscritos = this._inscritos.filter(f => f !== func)
   }
 
   notificar() {
